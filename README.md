@@ -1,5 +1,5 @@
-# Map My World
-The purpose of this repository is to create a [2D occupancy grid](/docs/2D_Occupancy_Grid_Map.png) and [3D map](/docs/MapMyWorld.png) from a simulated environment using [robot](/my_robot/) with the [RTAB-Map](https://introlab.github.io/rtabmap/). 
+# Home Service Robot
+The purpose of this repository is to program a home service robot that will autonomously map an environment and navigate to pickup and deliver objects!. 
 
 The steps are listed as [summary of tasks](task_summary.txt).
 
@@ -88,7 +88,7 @@ catkin_init_workspace
 ```
 * Clone this repository and its submodules.
 ```
-git clone https://github.com/sidharth2189/RoboND-MapMyWorld.git
+git clone https://github.com/sidharth2189/RoboND-HomeServiceRobot.git
 ```
 ```
 git submodule update --init --recursive

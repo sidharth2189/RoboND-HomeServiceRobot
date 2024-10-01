@@ -42,13 +42,17 @@ int main(int argc, char** argv){
   
     // Check if the robot reached its goal
     if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    {
       ROS_INFO("Hooray, reached pick up location!");
       pick = true;
       
       // Wait at pick up for 5 seconds
       ros::Duration(5.0).sleep();
+    }
     else
+    {
       ROS_INFO("Failed to reach pick up location!");
+    }
     drop = false;
   }
 
@@ -67,10 +71,14 @@ int main(int argc, char** argv){
   
     // Check if the robot reached its goal
     if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    {
       ROS_INFO("Hooray, reached drop location!");
       drop = true;
+    }
     else
+    {
       ROS_INFO("Failed to reach drop location!");
+    }
     pick = false;
   }
   

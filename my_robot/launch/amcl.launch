@@ -6,7 +6,7 @@
 
   <!-- amcl -->
   <node name="amcl" pkg="amcl" type="amcl" output="screen">
-    <remap from="scan" to="scan" />
+    <remap from="scan" to="/scan" />
     
     <!--connect robot and world frames-->
     <param name="odom_frame_id" value="odom"/>
@@ -43,7 +43,7 @@
 
   <!-- navigation stack: move base -->
   <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
-    <remap from="scan" to="scan" />
+    <remap from="scan" to="/scan" />
 
     <!--planners-->
     <param name="base_global_planner" value="navfn/NavfnROS"/>

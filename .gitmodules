@@ -4,3 +4,6 @@
 [submodule "pgm_map_creator"]
 	path = pgm_map_creator
 	url = https://github.com/hyfan1116/pgm_map_creator.git
+[submodule "turtlebot_interactions"]
+	path = turtlebot_interactions
+	url = https://github.com/turtlebot/turtlebot_interactions.git

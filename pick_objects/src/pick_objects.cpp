@@ -6,8 +6,12 @@
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
 
 int main(int argc, char** argv){
-  // Initialize the simple_navigation_goals node
-  ros::init(argc, argv, "simple_navigation_goals");
+  // Initialize the pick_objects node
+  ros::init(argc, argv, "pick_objects");
+
+  // Initialize flags for pick and drop
+  bool pick = false;
+  bool drop = false;
 
   //tell the action client that we want to spin a thread by default
   MoveBaseClient ac("move_base", true);
@@ -20,25 +24,56 @@ int main(int argc, char** argv){
   move_base_msgs::MoveBaseGoal goal;
 
   // set up the frame parameters
-  goal.target_pose.header.frame_id = "base_link";
+  goal.target_pose.header.frame_id = "map";
   goal.target_pose.header.stamp = ros::Time::now();
   
-  // Define a position and orientation for the robot to reach
-  goal.target_pose.pose.position.x = 1.0;
-  goal.target_pose.pose.orientation.w = 1.0;
+  if (!pick)
+  {
+    // Define a position and orientation for the robot to reach
+    goal.target_pose.pose.position.x = -5.0;
+    goal.target_pose.pose.orientation.w = 1.0;
 
-   // Send the goal position and orientation for the robot to reach
-  ROS_INFO("Sending goal");
-  ac.sendGoal(goal);
+    // Send the goal position and orientation for the robot to reach
+    ROS_INFO("Sending goal");
+    ac.sendGoal(goal);
   
-  // Wait an infinite time for the results
-  ac.waitForResult();
+    // Wait an infinite time for the results
+    ac.waitForResult();
   
-  // Check if the robot reached its goal
-  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-    ROS_INFO("Hooray, the base moved 1 meter forward");
-  else
-    ROS_INFO("The base failed to move forward 1 meter for some reason");
+    // Check if the robot reached its goal
+    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+      ROS_INFO("Hooray, reached pick up location!");
+      pick = true;
+      
+      // Wait at pick up for 5 seconds
+      ros::Duration(5.0).sleep();
+    else
+      ROS_INFO("Failed to reach pick up location!");
+    drop = false;
+  }
+
+  if (!drop)
+  {
+    // Define a position and orientation for the robot to reach
+    goal.target_pose.pose.position.x = 5.0;
+    goal.target_pose.pose.orientation.w = 1.0;
+
+    // Send the goal position and orientation for the robot to reach
+    ROS_INFO("Sending goal");
+    ac.sendGoal(goal);
+  
+    // Wait an infinite time for the results
+    ac.waitForResult();
+  
+    // Check if the robot reached its goal
+    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+      ROS_INFO("Hooray, reached drop location!");
+      drop = true;
+    else
+      ROS_INFO("Failed to reach drop location!");
+    pick = false;
+  }
+  
 
   return 0;
 }

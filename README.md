@@ -12,7 +12,7 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
 ## Getting Started
 
 ### Directory structure
-    .HomeServiceProject                     # Robot SLAM and navigation
+    .HomeServiceRobot                       # Robot SLAM and navigation
     ├── my_robot                            # my_robot package                   
     │   ├── launch                          # launch folder for launch files   
     │   │   ├── robot_description.launch    # Generate urdf from xacro

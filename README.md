@@ -3,8 +3,6 @@ The purpose of this repository is to program a home service robot that will auto
 
 The steps are listed as [summary of tasks](task_summary.txt).
 
-<img src="Map_My_World.gif"/>
-
 ## Description
 Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blob/main/images/office.png) one can identify:
 
@@ -22,7 +20,8 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
     │   │   ├── amcl.launch                 # launch robot localization using amcl
     │   │   ├── mapping.launch              # launch mapping node using rtabmap
     │   │   ├── localization.launch         # launch mapping with localization
-    │   │   ├── teleop.launch               # launch teleop_twist_keyboard to move robot    
+    │   │   ├── teleop.launch               # launch teleop_twist_keyboard to move robot
+    │   │   ├── gmapping.launch             # launch ROS gmapping for robot    
     │   ├── meshes                          # meshes folder for sensors
     │   │   ├── hokuyo.dae                  # Hokuyo lidar sensor
     │   ├── urdf                            # urdf folder for xarco files
@@ -37,31 +36,39 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
     │   │   ├── local_costmap_params.yaml   # rosparam for move_base package
     │   │   ├── global_costmap_params.yaml  # rosparam for move_base package
     │   │   ├── base_costmap_params.yaml    # rosparam for move_base package
-    │   ├── maps                            # parmater for robot's navigational goal   
+    │   ├── maps                            # map storage   
     │   │   ├── map.pgm                     # map generated from pgm_map_creator package
     │   │   ├── map.yaml                    # map metadata
     │   ├── rtabmap                         # database generated from mapping
     │   │   ├── rtabmap.db                  # database file
     ├── pgm_map_creator                     # map creator package (submodule)    
     ├── teleop_twist_keyboard               # package to control robot motion through keyboard (submodule)
-    ├── amcl.rviz                           # visualization file for localization using amcl                           
+    ├── turtlebot_interactions              # turtlebot_rviz_launchers package for preconfigured rviz workspace
+    ├── pick_objects                        # Navigational goal node
+    ├── amcl.rviz                           # visualization file for localization using amcl
+    ├── shell_scripts                       # store various shell scripts
+    │   ├── launch.sh                       # sample launch for gazebo, rosmaster and rviz
+    │   ├── pick_objects.sh                 # script to launch robot, amcl, rviz and pick_objects
+    │   ├── test_navigation.sh              # script for localization and navigation testing
+    │   ├── test_slam.sh                    # script for slam testing (gmapping)                            
     └──                          
 
 ### Node view
 
-Node view for graph-based SLAM using rtabmaps for [my_robot](/my_robot/)
-<img src="/docs/rqt_graph.png"/>
+Example
 
 ### Dependencies
 
 * Operating System — Ubuntu 16.04 LTS. ([Udacity VM Image](https://s3-us-west-1.amazonaws.com/udacity-robotics/Virtual+Machines/Lubuntu_071917/RoboVM_V2.1.0.zip))
   *  Please refer steps for usage of VM, resource allocation and first boot [here](/docs/VM.txt).
 
-* [rtabmaps ros](http://wiki.ros.org/rtabmap_ros)
-  * If the package is unavailable for above VM (ros kinetic), please install as below.
-  ```sudo apt-get install ros-kinetic-rtabmap-ros```
+* [gmapping ros](https://wiki.ros.org/gmapping)
+  * Please check the "Show EOL distros" and check the [gmapping github](https://github.com/ros-perception/slam_gmapping) branch appropriate for your version of ROS.
+  * Alternatively, if the package is not installed for above VM (ros kinetic), please install as below.
+  ```sudo apt install ros-kinetic-slam-gmapping```</brk> or ```sudo apt-get install ros-kinetic-gmapping```
 
 * Git LFS: The generated database is [stored](/my_robot/rtabmap/rtabmap.db) as an LFS file due to its size. Please [install git LFS](https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md) on system to be able to not have issues fetching this file.
+
 
 ### Installing
 * To verify installation, run
@@ -93,7 +100,7 @@ git clone https://github.com/sidharth2189/RoboND-HomeServiceRobot.git
 ```
 git submodule update --init --recursive
 ```
-* Copy ```my_robot``` and [```teleop_twist_keyboard```](https://github.com/ros-teleop/teleop_twist_keyboard) packages into the source folder for catkin workspace.```/catkin_ws/src```
+* Copy ```my_robot```, [```teleop_twist_keyboard```](https://github.com/ros-teleop/teleop_twist_keyboard) and ```/catkin_ws/src```, [```turtlebot_interactions```](https://github.com/turtlebot/turtlebot_interactions) and [pick_objects](/pick_objects/) packages into the source folder for catkin workspace.
 * Navigate to catkin workspace.
 ```
 cd ~/catkin_ws/
@@ -106,73 +113,22 @@ catkin_make
 ```
 source devel/setup.bash
 ```
-* To check for missing package.
+* To check for missing package and install dependency if not done.
 ```
 rosdep check <package name>
 ```
-* Launch the robot inside the world. Alongside Gazebo, this also open rviz for visualization.
 ```
-roslaunch my_robot world.launch
+rosdep -i install <package name>
 ```
-* Launch teleop in another terminal.
+* Give permission to shell scripts.
 ```
-cd ~/catkin_ws/
-source devel/setup.bash
-roslaunch my_robot teleop.launch
+chmod +x launch.sh
 ```
-* Launch localization using rtbmaps in another terminal.
+* Launch script.
 ```
-cd ~/catkin_ws/
-source devel/setup.bash
-roslaunch my_robot localization.launch
-```
-  * Please note that, in the launch file, setting the parameter ```Mem/IncrementalMemory``` to ```false```, causes [empty working memory](/docs/warning_memory.png)
-  * Hence, it is set to ```true```.
-* Navigate robot in the simulation to create map for the environment.
-* When this is done, terminal the node and the map db file can be found in the place specified in the launch file. If the argument is not modified, it will be located in the ```/root/.ros/``` folder.
-* Database analysis: ```rtabmap-databaseViewer``` is used for exploring database after generation. It is isolated from ROS and allows for complete analysis of mapping session.
-* Open map database as below
-```
-rtabmap-databaseViewer ~/.ros/rtabmap.db
-```
-<img src="/docs/rtabmap_databseViewer.png"/>
-
-* Add some windows to get a better view of the relevant information.
-  * Say yes to using the database parameters
-  * View -> Constraint View
-  * View -> Graph View
-  * On the left, you have your 2D grid map in all of its updated iterations and the path of your robot.
-  * In the middle you have different images from the mapping process. Here you can scrub through images to see all of the features from your detection algorithm. These features are in yellow. The pink indicates where two images have features in common and this information is being used to create neighboring links and loop closures!
-  * Finally, on the right you can see the constraint view. This is where you can identify where and how the neighboring links and loop closures were created.
-  * You can see the number of loop closures in the bottom left.
-  * The codes stand for the following: Neighbor, Neighbor Merged, Global Loop closure, Local loop closure by space, Local loop closure by time, User loop closure, and Prior link.  
-
-### Best practices
-* One can start with lower velocities.
-* The Goal is to create a great map with the least amount of passes as possible.
-* Maximize loop closures by going over similar paths two or three times. 
-* This allows for the maximization of feature detection, facilitating faster loop closures
-
-### Advanced tuning parameters
-* Please take a look at the [advanced tuning parameters](http://wiki.ros.org/rtabmap_ros/Tutorials/Advanced%20Parameter%20Tuning)
-* Based on optimization robsutness as discussed in [knowledge hub](https://knowledge.udacity.com/questions/714369), following line is added to [localization launch file](/my_robot/launch/localization.launch)
-```
-<param name="Optimizer/Robust" type="string" value="true"/>
+./pick_objects.sh
 ```
 
 ## Useful links
-* [Oppeni Kinnect](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#OpenniKinect) 3D Camera description file.
-* [Ros Teleop package](https://github.com/ros-teleop/teleop_twist_keyboard) is used to send command for robot movement, using keyboard.
+* [Duplicating a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository)
 * [Robot reference](https://github.com/sidharth2189/RoboND-WhereAmI)
-* [Graph slam](http://robot.cc/papers/thrun.graphslam.pdf) for large scale mapping of urban structures.
-* [Occupancy grid mapping](https://wiki.ros.org/gmapping). The gmapping package provides laser-based SLAM. as a ROS node called slam_gmapping. Using slam_gmapping, you can create a 2-D occupancy grid map (like a building floorplan) from laser and pose data collected by a mobile robot.
-* [rtabmap_ros](http://wiki.ros.org/rtabmap_ros)- It is the ROS wrapper of [Real-Time Appearance-Based Mapping](http://introlab.github.io/rtabmap/). This package can be used to generate a 3D point clouds of the environment and/or to create a 2D occupancy grid map for navigation. 
-* [rtabmap_viz](http://wiki.ros.org/rtabmap_viz)- This node starts the visualization interface of RTAB-Map.
-* [RTAB-Map 3D Lidar SLAM](https://www.youtube.com/watch?v=ytsfhMdv9W0)
-* [RTAB-Map ROS Tutorial](https://www.youtube.com/watch?v=gJz-MWn7jhE)
-* [RTAB-Map as an Open-Source Lidar and Visual SLAM Library for Large-Scale and Long-Term Online Operation](https://arxiv.org/html/2403.06341v1)
-* [Depth sensor cameras](https://www.e-consystems.com/blog/camera/technology/what-are-depth-sensing-cameras-how-do-they-work/?srsltid=AfmBOoq2aSWT2x0gB7iKADZXFQxWZhHf1KYBNXQfyo5Xnu2USkFZlyPb)
-* [Octomap](https://octomap.github.io/)
-* [Tutorial on graph based SLAM](http://www2.informatik.uni-freiburg.de/~stachnis/pdf/grisetti10titsmag.pdf)
-* [Tether-Aware Path Planning for Autonomous Exploration of Unknown Environments](https://www.youtube.com/watch?v=nROO0BFK4lc)
-* [Mapping techniques in AI and robotics](https://www.geeksforgeeks.org/mapping-techniques-in-artificial-intelligence-and-robotics/)

@@ -30,7 +30,7 @@ int main(int argc, char** argv){
   if (!pick)
   {
     // Define a position and orientation for the robot to reach
-    goal.target_pose.pose.position.x = 1.0;
+    goal.target_pose.pose.position.x = 2.0;
     goal.target_pose.pose.position.y = 0.0;
     goal.target_pose.pose.orientation.w = 1.0;
 
@@ -51,7 +51,7 @@ int main(int argc, char** argv){
       ros::Duration(5.0).sleep();
 
       // Define a position and orientation for the robot to reach
-      goal.target_pose.pose.position.x = 1.0;
+      goal.target_pose.pose.position.x = 0.0;
       goal.target_pose.pose.position.y = 7.0;
       goal.target_pose.pose.orientation.w = 1.0;
 

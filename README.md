@@ -149,3 +149,4 @@ chmod +x pick_objects.sh
 * Comparative [study](https://webspace.science.uu.nl/~gerae101/pdf/compare.pdf) for Probabilistic roadmap planners.
 * [Path planning](https://www.cs.cmu.edu/~maxim/files/pathplanforMAV_icra13.pdf) for non-circular Micro Aerial Vehicles in constrained environment
 * [Turtlebot rviz launchers](https://wiki.ros.org/turtlebot_rviz_launchers) - a package for preconfigured rviz workspace.
+* [Turorial](http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes) for modeling virtual objects with markers in rviz.

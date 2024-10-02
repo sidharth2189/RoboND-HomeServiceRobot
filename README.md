@@ -133,3 +133,5 @@ chmod +x pick_objects.sh
 ## Useful links
 * [Duplicating a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository)
 * [Robot reference](https://github.com/sidharth2189/RoboND-WhereAmI)
+* [Navigation tuning guide](https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide) for move base
+* [Knowledge discussion](https://knowledge.udacity.com/questions/418425#419880) on amcl and base planner tuning.

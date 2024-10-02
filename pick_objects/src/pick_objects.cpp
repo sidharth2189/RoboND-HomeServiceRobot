@@ -10,8 +10,8 @@ int main(int argc, char** argv){
   ros::init(argc, argv, "pick_objects");
 
   // Initialize flags for pick and drop
-  bool pick = false;
-  bool drop = false;
+  static bool pick = false;
+  static bool drop = false;
 
   //tell the action client that we want to spin a thread by default
   MoveBaseClient ac("move_base", true);
@@ -30,7 +30,7 @@ int main(int argc, char** argv){
   if (!pick)
   {
     // Define a position and orientation for the robot to reach
-    goal.target_pose.pose.position.x = 5.0;
+    goal.target_pose.pose.position.x = 3.5;
     goal.target_pose.pose.orientation.w = 1.0;
 
     // Send the goal position and orientation for the robot to reach
@@ -53,13 +53,13 @@ int main(int argc, char** argv){
     {
       ROS_INFO("Failed to reach pick up location!");
     }
-    drop = false;
+    //drop = false;
   }
 
   if (!drop)
   {
     // Define a position and orientation for the robot to reach
-    goal.target_pose.pose.position.x = 2.0;
+    goal.target_pose.pose.position.x = 1.0;
     goal.target_pose.pose.orientation.w = 1.0;
 
     // Send the goal position and orientation for the robot to reach
@@ -79,7 +79,7 @@ int main(int argc, char** argv){
     {
       ROS_INFO("Failed to reach drop location!");
     }
-    pick = false;
+    //pick = false;
   }
   
 

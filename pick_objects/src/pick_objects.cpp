@@ -67,6 +67,9 @@ int main(int argc, char** argv){
       {
         ROS_INFO("EeHaa, reached drop location!");
         drop = true;
+        
+        // Wait at pick up for 5 seconds
+        ros::Duration(5.0).sleep();
       }
       else
       {

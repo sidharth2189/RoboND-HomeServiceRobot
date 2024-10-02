@@ -56,7 +56,7 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
 ### Node view
 
 Node view for SLAM and Navigation for [my_robot](/my_robot/)
-<img src="/docs/rqt_graph.png"/>
+<img src="/docs/HomeServiceRobo.png"/>
 
 ### Dependencies
 

@@ -12,7 +12,7 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
 ## Getting Started
 
 ### Directory structure
-    .MapMyWorld                             # Robot localization Project
+    .HomeServiceProject                     # Robot SLAM and navigation
     ├── my_robot                            # my_robot package                   
     │   ├── launch                          # launch folder for launch files   
     │   │   ├── robot_description.launch    # Generate urdf from xacro
@@ -67,6 +67,8 @@ Node view for SLAM and Navigation for [my_robot](/my_robot/)
   * Please check the "Show EOL distros" and check the [gmapping github](https://github.com/ros-perception/slam_gmapping) branch appropriate for your version of ROS.
   * Alternatively, if the package is not installed for above VM (ros kinetic), please install as below.
   ```sudo apt install ros-kinetic-slam-gmapping```</brk> or ```sudo apt-get install ros-kinetic-gmapping```
+
+* [amcl](https://github.com/sidharth2189/RoboND-WhereAmI)
 
 * Git LFS: The generated database is [stored](/my_robot/rtabmap/rtabmap.db) as an LFS file due to its size. Please [install git LFS](https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md) on system to be able to not have issues fetching this file.
 

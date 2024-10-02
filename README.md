@@ -62,10 +62,11 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
     │   ├── home_service.sh                 # script home service robot (robot, rviz config, pick_objects and add_markers)                           
     └──                          
 
-### Node view
+### Node/Topic view
 
-Node view for SLAM and Navigation for [my_robot](/my_robot/)
-<img src="/docs/HomeServiceRobo.png"/>
+Node/Topic view for SLAM and Navigation for [my_robot](/my_robot/)
+<img src="/docs/HomeServRobo_Nodes.png"/>
+<img src="/docs/HomeServRobo_Nodes_Topics.png"/>
 
 ### Dependencies
 

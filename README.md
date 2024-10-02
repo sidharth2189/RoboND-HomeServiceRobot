@@ -113,7 +113,7 @@ git clone https://github.com/sidharth2189/RoboND-HomeServiceRobot.git
 ```
 git submodule update --init --recursive
 ```
-* Copy [```my_robot```](/my_robot/), [```teleop_twist_keyboard```](https://github.com/ros-teleop/teleop_twist_keyboard), [```turtlebot_interactions```](https://github.com/turtlebot/turtlebot_interactions) and [pick_objects](/pick_objects/) packages into the source folder for catkin workspace, ```/catkin_ws/src```.
+* Copy [```my_robot```](/my_robot/), [```teleop_twist_keyboard```](https://github.com/ros-teleop/teleop_twist_keyboard), [```turtlebot_interactions```](https://github.com/turtlebot/turtlebot_interactions), [```pick_objects```](/pick_objects/) and[```add_markers```](/add_markers/) packages into the source folder for catkin workspace, ```/catkin_ws/src```.
 * Navigate to catkin workspace.
 ```
 cd ~/catkin_ws/
@@ -141,7 +141,7 @@ chmod +x home_service.sh
 ```
 ./home_service.sh
 ```
-* Note that to run the script ```./test_Navigation.sh, the [dependency](#dependencies) for gmapping needs to be followed.
+* Note that to run the script ```./test_Navigation.sh```, the [dependency](#dependencies) for gmapping needs to be followed.
 
 ## Useful links
 * [Duplicating a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository)

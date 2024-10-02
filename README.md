@@ -132,7 +132,7 @@ chmod +x pick_objects.sh
 ```
 ./pick_objects.sh
 ```
-* Note that to run the script ```./test_Navigation.sh, the [dependency](###-dependencies) for gmapping needs to be followed.
+* Note that to run the script ```./test_Navigation.sh, the [dependency](#dependencies) for gmapping needs to be followed.
 
 ## Useful links
 * [Duplicating a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository)

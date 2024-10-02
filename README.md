@@ -1,5 +1,5 @@
 # Home Service Robot
-The purpose of this repository is to program a home service robot that will autonomously map an environment and navigate to pickup and deliver objects!. 
+The purpose of this repository is to program a home service robot that will autonomously map an environment and navigate to pickup and deliver objects. 
 
 The steps are listed as [summary of tasks](task_summary.txt).
 
@@ -133,5 +133,5 @@ chmod +x pick_objects.sh
 ## Useful links
 * [Duplicating a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository)
 * [Robot reference](https://github.com/sidharth2189/RoboND-WhereAmI)
-* [Navigation tuning guide](https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide) for move base
+* [Navigation tuning guide](https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide)
 * [Knowledge discussion](https://knowledge.udacity.com/questions/418425#419880) on amcl and base planner tuning.

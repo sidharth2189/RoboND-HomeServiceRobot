@@ -55,7 +55,8 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
 
 ### Node view
 
-Example
+Node view for SLAM and Navigation for [my_robot](/my_robot/)
+<img src="/docs/rqt_graph.png"/>
 
 ### Dependencies
 
@@ -100,7 +101,7 @@ git clone https://github.com/sidharth2189/RoboND-HomeServiceRobot.git
 ```
 git submodule update --init --recursive
 ```
-* Copy ```my_robot```, [```teleop_twist_keyboard```](https://github.com/ros-teleop/teleop_twist_keyboard) and ```/catkin_ws/src```, [```turtlebot_interactions```](https://github.com/turtlebot/turtlebot_interactions) and [pick_objects](/pick_objects/) packages into the source folder for catkin workspace.
+* Copy [```my_robot```](/my_robot/), [```teleop_twist_keyboard```](https://github.com/ros-teleop/teleop_twist_keyboard), [```turtlebot_interactions```](https://github.com/turtlebot/turtlebot_interactions) and [pick_objects](/pick_objects/) packages into the source folder for catkin workspace, ```/catkin_ws/src```.
 * Navigate to catkin workspace.
 ```
 cd ~/catkin_ws/
@@ -120,9 +121,9 @@ rosdep check <package name>
 ```
 rosdep -i install <package name>
 ```
-* Give permission to shell scripts.
+* Turn shell script to executable.
 ```
-chmod +x launch.sh
+chmod +x pick_objects.sh
 ```
 * Launch script.
 ```

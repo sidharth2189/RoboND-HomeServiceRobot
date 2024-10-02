@@ -14,7 +14,7 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
 ### Directory structure
     .HomeServiceRobot                       # Robot SLAM and navigation
     ├── my_robot                            # my_robot package                   
-    │   ├── launch                          # launch folder for launch files   
+    │   ├── launch                          # launch files   
     │   │   ├── robot_description.launch    # Generate urdf from xacro
     │   │   ├── world.launch                # launch Gazebo world along with robot
     │   │   ├── amcl.launch                 # launch robot localization using amcl
@@ -41,16 +41,25 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
     │   │   ├── map.yaml                    # map metadata
     │   ├── rtabmap                         # database generated from mapping
     │   │   ├── rtabmap.db                  # database file
+    │   ├── rviz                            # saved rviz config files
+    │   │   ├── marker.rviz                 # view_navigation from turtlebot_rviz_launchers with marker added
     ├── pgm_map_creator                     # map creator package (submodule)    
     ├── teleop_twist_keyboard               # package to control robot motion through keyboard (submodule)
     ├── turtlebot_interactions              # turtlebot_rviz_launchers package for preconfigured rviz workspace
     ├── pick_objects                        # Navigational goal node
+    │   ├── launch                          # launch files   
+    │   │   ├── pick_objects.launch         # launch file for pick_objects node
+    ├── add_markers                         # Model virtual objects
+    │   ├── launch                          # launch files   
+    │   │   ├── add_markers.launch          # launch file for add_markers node
     ├── amcl.rviz                           # visualization file for localization using amcl
     ├── shell_scripts                       # store various shell scripts
     │   ├── launch.sh                       # sample launch for gazebo, rosmaster and rviz
     │   ├── pick_objects.sh                 # script to launch robot, amcl, rviz and pick_objects
     │   ├── test_navigation.sh              # script for localization and navigation testing
-    │   ├── test_slam.sh                    # script for slam testing (gmapping)                            
+    │   ├── test_slam.sh                    # script for slam testing (gmapping)  
+    │   ├── add_marker.sh                   # script to launch robot, amcl, rviz and add_markers
+    │   ├── home_service.sh                 # script home service robot (robot, rviz config, pick_objects and add_markers)                           
     └──                          
 
 ### Node view
@@ -126,11 +135,11 @@ rosdep -i install <package name>
 ```
 * Turn shell script to executable.
 ```
-chmod +x pick_objects.sh
+chmod +x home_service.sh
 ```
 * Launch script.
 ```
-./pick_objects.sh
+./home_service.sh
 ```
 * Note that to run the script ```./test_Navigation.sh, the [dependency](#dependencies) for gmapping needs to be followed.
 

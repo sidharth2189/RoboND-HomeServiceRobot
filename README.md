@@ -62,6 +62,7 @@ Node view for SLAM and Navigation for [my_robot](/my_robot/)
 
 * Operating System — Ubuntu 16.04 LTS. ([Udacity VM Image](https://s3-us-west-1.amazonaws.com/udacity-robotics/Virtual+Machines/Lubuntu_071917/RoboVM_V2.1.0.zip))
   *  Please refer steps for usage of VM, resource allocation and first boot [here](/docs/VM.txt).
+  * Alternatively, for configuring personal set up, [here](https://wiki.ros.org/kinetic/Installation/Ubuntu) is the Ubuntu installation steps for ROS Kinetic.
 
 * [gmapping ros](https://wiki.ros.org/gmapping)
   * Please check the "Show EOL distros" and check the [gmapping github](https://github.com/ros-perception/slam_gmapping) branch appropriate for your version of ROS.
@@ -137,3 +138,13 @@ chmod +x pick_objects.sh
 * [Robot reference](https://github.com/sidharth2189/RoboND-WhereAmI)
 * [Navigation tuning guide](https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide)
 * [Knowledge discussion](https://knowledge.udacity.com/questions/418425#419880) on amcl and base planner tuning.
+* [Configuration space](https://www.youtube.com/watch?v=SBFwgR4K1Gk)
+* [Minkowski addition](https://en.wikipedia.org/wiki/Minkowski_addition)
+* [Voronoi diagram](https://en.wikipedia.org/wiki/Voronoi_diagram)
+* [State value function](https://towardsdatascience.com/reinforcement-learning-rl-101-with-python-e1aa0d37d43b) in Markov decision process for probabilistic path planning
+* [Uniform cost search algorithm](https://www.geeksforgeeks.org/uniform-cost-search-dijkstra-for-large-graphs/)
+* [Visualize discrete path planners](https://qiao.github.io/PathFinding.js/visual/)
+* [Types of graphs](https://www.geeksforgeeks.org/graph-types-and-applications/)
+* Comparative [study](https://webspace.science.uu.nl/~gerae101/pdf/compare.pdf) for Probabilistic roadmap planners.
+* [Path planning](https://www.cs.cmu.edu/~maxim/files/pathplanforMAV_icra13.pdf) for non-circular Micro Aerial Vehicles in constrained environment
+* [Turtlebot rviz launchers](https://wiki.ros.org/turtlebot_rviz_launchers) - a package for preconfigured rviz workspace.

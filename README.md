@@ -156,9 +156,9 @@ chmod +x home_service.sh
 ## Improvements
 Some improvements to the code base can be considered as provided by project reviwer.
 
-* Instead of hard-coding goal poses in the [```pick_objects/src/pick_objects.cpp```](/pick_objects/src/pick_objects.cpp), one can load goal locations as ```<rosparam>``` through launch file and send pick up and drop locations to [```pick_objects```](/pick_objects/) node. Use the ```<rosparam>``` tag to load the parameter to ROS master.
+* Instead of hard-coding goal poses in the [```pick_objects.cpp```](/pick_objects/src/pick_objects.cpp), one can load goal locations as ```<rosparam>``` through launch file and send pick up and drop locations to [```pick_objects```](/pick_objects/) node. Use the ```<rosparam>``` tag to load the parameter to ROS master.
 
-* In [```pick_objects/src/pick_objects.cpp```](/pick_objects/src/pick_objects.cpp), the move_base action server is coded to send goals in sequential order inside the main function. This is good for beginners. But in the longer run, a better approach will be to use functions to do these tasks. 
+* In [```pick_objects.cpp```](/pick_objects/src/pick_objects.cpp), the move_base action server is coded to send goals in sequential order inside the main function. This is good for beginners. But in the longer run, a better approach will be to use functions to do these tasks. 
   * For example, one can use a function called ```send_move_base_goal(x, y)``` which will call the movebase action server. This will make the code more readable and reusable in the longer run. 
   * Also function can be called with different (x, y) values without having to duplicate the code.
 

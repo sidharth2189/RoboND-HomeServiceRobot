@@ -39,6 +39,7 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
     │   ├── maps                            # map storage   
     │   │   ├── map.pgm                     # map generated from pgm_map_creator package
     │   │   ├── map.yaml                    # map metadata
+    │   │   ├── slam_map.yaml               # map generated from SLAM testing using shell_script/test_SLAM.sh
     │   ├── rtabmap                         # database generated from mapping
     │   │   ├── rtabmap.db                  # database file
     │   ├── rviz                            # saved rviz config files

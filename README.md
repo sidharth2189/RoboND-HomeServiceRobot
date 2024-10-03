@@ -153,6 +153,19 @@ chmod +x home_service.sh
 ```
 * Note that to run the script ```./test_Navigation.sh```, the [dependency](#dependencies) for gmapping needs to be followed.
 
+## Improvements
+Some improvements to the code base can be considered as provided by project reviwer.
+
+* Instead of hard-coding goal poses in the [```pick_objects/src/pick_objects.cpp```](/pick_objects/src/pick_objects.cpp), one can load goal locations as ```<rosparam>``` through launch file and send pick up and drop locations to [```pick_objects```](/pick_objects/) node. Use the ```<rosparam>``` tag to load the parameter to ROS master.
+
+* In [```pick_objects/src/pick_objects.cpp```](/pick_objects/src/pick_objects.cpp), the move_base action server is coded to send goals in sequential order inside the main function. This is good for beginners. But in the longer run, a better approach will be to use functions to do these tasks. 
+  * For example, one can use a function called ```send_move_base_goal(x, y)``` which will call the movebase action server. This will make the code more readable and reusable in the longer run. 
+  * Also function can be called with different (x, y) values without having to duplicate the code.
+
+* Use 2D gmapping [map](/my_robot/maps/slam_map.pgm) instead of [map](/my_robot/maps/map.pgm) from [pgm_map_creator](/https://github.com/hyfan1116/pgm_map_creator).
+  * Refer [understanding gmapping and how to use the package](https://www.youtube.com/watch?v=tUm6MRGYam8)
+  * Basic navigation tuning [guide](https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide).
+
 ## Useful links
 * [Duplicating a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository)
 * [Robot reference](https://github.com/sidharth2189/RoboND-WhereAmI)
@@ -170,5 +183,10 @@ chmod +x home_service.sh
 * [Turtlebot rviz launchers](https://wiki.ros.org/turtlebot_rviz_launchers) - a package for preconfigured rviz workspace.
 * [Tutorial](https://wiki.ros.org/navigation/Tutorials/SendingSimpleGoals) for sending simple navigational goals.
 * [Turorial](http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes) for modeling virtual objects with markers in rviz.
-* [Handle ROS param through YAML](https://roboticsbackend.com/ros-param-yaml-format/). (For example send pick up and drop locations to [```pick_objects```](/pick_objects/) node)
+* [Handle ROS param through YAML](https://roboticsbackend.com/ros-param-yaml-format/). (For example instead of hard-coding goal poses in the code, one can load goal locations as ```<rosparam>``` through launch file and send pick up and drop locations to [```pick_objects```](/pick_objects/) node. Use the ```<rosparam>``` tag to load the parameter to ROS master)
 * RGBD camera [openni_kinect](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#OpenniKinect) &  Laser [Hokuyo](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#Laser)
+* [Tune the navigation parameters](https://www.youtube.com/watch?v=s0JA9jjZi44) for better performance and understanding of the navigation software stack.
+* [README formatting](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+* [How various parameters of the mapping code can be tuned to improve the map accuracy](https://ieeexplore.ieee.org/document/7847825).
+* [How](https://www.semanticscholar.org/paper/Design-of-an-autonomous-mobile-robot-based-on-ROS-K%C3%B6seo%C4%9Flu-%C3%87eli%CC%87k/9dd90f7b746657fe077f8cf1ea56f6a8d65ce21c#extracted) to build a real robot including how to select hardware and also a brief note on the communication protocol that can be used on a real robot.
+

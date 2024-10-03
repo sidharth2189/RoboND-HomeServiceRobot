@@ -49,17 +49,23 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
     ├── pick_objects                        # Navigational goal node
     │   ├── launch                          # launch files   
     │   │   ├── pick_objects.launch         # launch file for pick_objects node
+    │   ├── src                             # source files   
+    │   │   ├── pick_objects.cpp            # node for navigational goal
     ├── add_markers                         # Model virtual objects
     │   ├── launch                          # launch files   
-    │   │   ├── add_markers.launch          # launch file for add_markers node
+    │   │   ├── add_markers.launch          # launch file for visualizing marker in home service robot
+    │   │   ├── add_markers_test.launch     # launch file for testing marker visualization
+    │   ├── src                             # source files   
+    │   │   ├── add_markers.cpp             # node for visualizing marker in home service robot
+    │   │   ├── add_markers_test.cpp        # node for testing marker visualization
     ├── amcl.rviz                           # visualization file for localization using amcl
     ├── shell_scripts                       # store various shell scripts
-    │   ├── launch.sh                       # sample launch for gazebo, rosmaster and rviz
-    │   ├── pick_objects.sh                 # script to launch robot, amcl, rviz and pick_objects
+    │   ├── launch.sh                       # demo launch file for gazebo, rosmaster and rviz
+    │   ├── pick_objects.sh                 # script to launch robot, amcl, rviz with navigational goal
     │   ├── test_navigation.sh              # script for localization and navigation testing
     │   ├── test_slam.sh                    # script for slam testing (gmapping)  
-    │   ├── add_marker.sh                   # script to launch robot, amcl, rviz and add_markers
-    │   ├── home_service.sh                 # script home service robot (robot, rviz config, pick_objects and add_markers)                           
+    │   ├── add_marker.sh                   # script to test marker visualization (robot, amcl, rviz and add_markers)
+    │   ├── home_service.sh                 # script for home service robot (robot, rviz config, pick_objects and add_markers)                           
     └──                          
 
 ### Node/Topic view

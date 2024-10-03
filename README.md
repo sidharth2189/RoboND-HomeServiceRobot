@@ -87,8 +87,6 @@ Node/Topic view for SLAM and Navigation for [my_robot](/my_robot/)
 
 * [amcl](https://github.com/sidharth2189/RoboND-WhereAmI)
 
-* Git LFS: The generated database is [stored](/my_robot/rtabmap/rtabmap.db) as an LFS file due to its size. Please [install git LFS](https://github.com/git-lfs/git-lfs/blob/main/INSTALLING.md) on system to be able to not have issues fetching this file.
-
 
 ### Installing
 * To verify installation, run

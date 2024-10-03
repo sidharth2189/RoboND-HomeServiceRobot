@@ -171,3 +171,4 @@ chmod +x home_service.sh
 * [Tutorial](https://wiki.ros.org/navigation/Tutorials/SendingSimpleGoals) for sending simple navigational goals.
 * [Turorial](http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes) for modeling virtual objects with markers in rviz.
 * [Handle ROS param through YAML](https://roboticsbackend.com/ros-param-yaml-format/). (For example send pick up and drop locations to [```pick_objects```](/pick_objects/) node)
+* RGBD camera [openni_kinect](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#OpenniKinect) &  Laser [Hokuyo](https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#Laser)

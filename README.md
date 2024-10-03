@@ -166,4 +166,5 @@ chmod +x home_service.sh
 * Comparative [study](https://webspace.science.uu.nl/~gerae101/pdf/compare.pdf) for Probabilistic roadmap planners.
 * [Path planning](https://www.cs.cmu.edu/~maxim/files/pathplanforMAV_icra13.pdf) for non-circular Micro Aerial Vehicles in constrained environment
 * [Turtlebot rviz launchers](https://wiki.ros.org/turtlebot_rviz_launchers) - a package for preconfigured rviz workspace.
+* [Tutorial](https://wiki.ros.org/navigation/Tutorials/SendingSimpleGoals) for sending simple navigational goals.
 * [Turorial](http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes) for modeling virtual objects with markers in rviz.

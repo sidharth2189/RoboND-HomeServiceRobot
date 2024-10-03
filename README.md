@@ -3,6 +3,8 @@ The purpose of this repository is to program a home service robot that will auto
 
 The steps are listed as [summary of tasks](task_summary.txt).
 
+<img src="HomeServiceRobot.gif"/>
+
 ## Description
 Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blob/main/images/office.png) one can identify:
 

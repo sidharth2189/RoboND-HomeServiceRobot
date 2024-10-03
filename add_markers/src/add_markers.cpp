@@ -5,29 +5,45 @@
 
 // Pick up and drop locations from navigation goal package
 // Refer pick_objects/src/pick_objects.cpp
-float pick_x = 2.0, pick_y = 0.0, pick_w = 1.0;
-float drop_x = 0.0, drop_y = 7.0, drop_w = 1.0;
+double pick_x = 2.0, pick_y = 0.0, pick_w = 1.0;
+double drop_x = 0.0, drop_y = 7.0, drop_w = 1.0;
 
 // Location flags
 bool pick = false, drop = false;
 
 // Cube dimension and tolerance
-float side = 0.2;
-float tol = 0.1 * side;
+double side = 0.4;
+double tol = 0.2;
+
+double euclideanDist(double x1, double y1, double x2, double y2)
+{
+  return (sqrt(pow((x1-x2), 2.0) + pow((y1-y2), 2.0)));
+}
 
 void checkRoboPose(const nav_msgs::Odometry::ConstPtr& msg)
 {
+  double transform_y = (-1)*msg->pose.pose.position.x;
+  double transform_x = msg->pose.pose.position.y;
+
   // Set location flags as per odom
-  if ((abs(pick_x - msg->pose.pose.position.x) < tol) && (abs(pick_y - msg->pose.pose.position.y) < tol) && (abs(pick_w - msg->pose.pose.orientation.w) < 0.02))
+  if (euclideanDist(pick_x, pick_y, transform_x, transform_y) < tol)
   {
     pick = true;
     ROS_INFO("Robot at pick up location");
   }
+  else
+  {
+    pick = false;
+  }
   
-  if ((abs(drop_x - msg->pose.pose.position.x) < tol) && (abs(drop_y - msg->pose.pose.position.y) < tol) && (abs(pick_w - msg->pose.pose.orientation.w) < 0.02))
+  if (euclideanDist(drop_x, drop_y, transform_x, transform_y) < tol)
   {
     drop = true;
     ROS_INFO("Robot at drop location");
+  }
+  else
+  {
+    drop = false;
   }
 }
 
@@ -94,21 +110,26 @@ int main( int argc, char** argv )
     {
       ros::spinOnce();
     }
+    ros::Duration(1).sleep();
+    ROS_INFO("Reached pick up zone!");
 
     // Remove marker after robot reaches pick up location
     
     // Wait for 5 seconds
     ros::Duration(5).sleep();
       
-    // Delete marker
+    // Delete marker and publsh the deletion
     marker.action = visualization_msgs::Marker::DELETE;
+    marker_pub.publish(marker);
     ROS_INFO("Pick up done!");
 
     // Wait for Robot to reach drop location
     while (!drop)
     {
       ros::spinOnce();
-    } 
+    }
+    ros::Duration(1).sleep();
+    ROS_INFO("Reached drop zone!"); 
 
     // Publish marker at drop location when robot reaches there
     // Add marker
@@ -144,8 +165,7 @@ int main( int argc, char** argv )
     ros::Duration(5).sleep();
     
     // ros::spinOnce();
-    r.sleep();
+    // r.sleep();
+    return 0;
   }
-  
-  return 0;
 }

@@ -73,9 +73,11 @@ Inside the [Gazebo world](https://github.com/sidharth2189/RoboND-GazeboWorld/blo
 
 ### Node/Topic view
 
-Node/Topic view for SLAM and Navigation for [my_robot](/my_robot/)
+* Node/Topic view for SLAM and Navigation for [my_robot](/my_robot/)
 <img src="/docs/HomeServRobo_Nodes.png"/>
 <img src="/docs/HomeServRobo_Nodes_Topics.png"/>
+
+* An overview of the packages used in this project is summarized [here](/docs/Packages%20in%20the%20Home%20Service%20Robot.pdf).
 
 ### Dependencies
 

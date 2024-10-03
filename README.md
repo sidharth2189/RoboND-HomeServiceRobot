@@ -162,7 +162,7 @@ Some improvements to the code base can be considered as provided by project revi
   * For example, one can use a function called ```send_move_base_goal(x, y)``` which will call the movebase action server. This will make the code more readable and reusable in the longer run. 
   * Also function can be called with different (x, y) values without having to duplicate the code.
 
-* Use 2D gmapping [map](/my_robot/maps/slam_map.pgm) instead of [map](/my_robot/maps/map.pgm) from [pgm_map_creator](/https://github.com/hyfan1116/pgm_map_creator).
+* Use 2D gmapping [map](/my_robot/maps/slam_map.pgm) instead of [map](/my_robot/maps/map.pgm) from [pgm_map_creator](https://github.com/hyfan1116/pgm_map_creator).
   * Refer [understanding gmapping and how to use the package](https://www.youtube.com/watch?v=tUm6MRGYam8)
   * Basic navigation tuning [guide](https://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide).
 

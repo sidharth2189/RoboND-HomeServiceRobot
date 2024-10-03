@@ -1,5 +1,5 @@
 Summary of Tasks
-In this project, simulatneous localization and mapping and path plannin gis used to create a home service robot.
+In this project, simulatneous localization and mapping and path planning is used to create a home service robot.
 
 #######################################################################################
 Official ROS packages

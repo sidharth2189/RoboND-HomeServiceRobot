@@ -168,3 +168,4 @@ chmod +x home_service.sh
 * [Turtlebot rviz launchers](https://wiki.ros.org/turtlebot_rviz_launchers) - a package for preconfigured rviz workspace.
 * [Tutorial](https://wiki.ros.org/navigation/Tutorials/SendingSimpleGoals) for sending simple navigational goals.
 * [Turorial](http://wiki.ros.org/rviz/Tutorials/Markers%3A%20Basic%20Shapes) for modeling virtual objects with markers in rviz.
+* [Handle ROS param through YAML](https://roboticsbackend.com/ros-param-yaml-format/). (For example send pick up and goal location to [```pick_objects```](/pick_objects/) node)
